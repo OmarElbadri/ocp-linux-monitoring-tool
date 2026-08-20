@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Monitoring</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark px-3">
+    <span class="navbar-brand">Monitoring Dashboard</span>
+    <button class="btn btn-outline-light btn-sm" onclick="logout()">Logout</button>
+</nav>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4"><canvas id="cpuChart"></canvas></div>
+        <div class="col-md-4"><canvas id="ramChart"></canvas></div>
+        <div class="col-md-4"><canvas id="diskChart"></canvas></div>
+    </div>
+
+    <div class="d-flex flex-column gap-2 mt-3" style="max-width: 420px;">
+
+        <button id="historyBtn" class="btn btn-secondary">
+            📜 Voir l'historique
+        </button>
+
+        <button id="tokenBtn" class="btn btn-primary">
+            🔑 Générer le token d'installation
+        </button>
+
+        <div class="alert alert-warning py-2 mb-0" role="alert" style="font-size: 0.85rem;">
+            <strong>⚠️ Important :</strong> Ce token est nécessaire uniquement lors du
+            <strong>premier démarrage</strong> de l'agent de monitoring.<br>
+            Pour les démarrages suivants, l'agent vous demandera toujours un token,
+            mais vous pouvez <strong>saisir n'importe quoi</strong> — l'agent démarrera correctement.
+        </div>
+
+        <div id="tokenBox" class="d-none">
+            <div class="alert alert-success mb-1" role="alert">
+                <strong>Token généré :</strong><br>
+                <code id="tokenValue" class="fs-6" style="word-break: break-all;"></code>
+                <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-success" id="copyBtn">
+                        📋 Copier le token
+                    </button>
+                </div>
+            </div>
+            <small class="text-muted">Collez ce token dans le terminal Ubuntu lors du <strong>premier</strong> démarrage de l'agent.</small>
+        </div>
+
+    </div>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
